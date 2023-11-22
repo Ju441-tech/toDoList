@@ -2,9 +2,11 @@ import { fetchApi } from "./functions/fetchApi.js";
 import{createLi}from'./components/task.js'
 
 const todo = await fetchApi()
-//const li=document.querySelector('li')
 
+//on créer les lis pour le premier affichage :
 createLi(todo)
+
+//On créer un event listner sur les boutons qui appelle, au click, la fonction filterTasks, celle ci sera paramétrée pour connaitre sur quel bouton on a cliqué grâce à e.currentTarget
 const butFilter=document.querySelectorAll('button')
 butFilter.forEach(button=>button.addEventListener('click',filterTasks))
 
@@ -20,7 +22,7 @@ function filterTasks(e){
     else if(e.currentTarget.innerHTML==="A faire"){
         const newTodo =todo.filter(el=>el.completed===false)
         createLi(newTodo) 
-        //Si on clique sur le bouton toutes, on ne change pass la l'objet todo, et on reconstruit les lis en fonction de l'objet todo
+        //Si on clique sur le bouton "toutes", on ne change pas l'objet todo, et on reconstruit les lis en fonction de l'objet todo
     }else{
         createLi(todo)
     }     
