@@ -11,10 +11,12 @@ createLi(todo)
 const butFilter=document.querySelectorAll('button')
 butFilter.forEach(button=>button.addEventListener('click',filterTasks))
 
+
 function filterTasks(e){
     const ul=document.querySelector('ul')
     ul.innerHTML=""
-    
+    butFilter.forEach(button=>button.classList.remove('active'))
+    e.currentTarget.classList.add('active')
     //si on click sur le bouton "Faites", on filtre la liste des todo, on ne garde que les completed=true, et on construit des lis en fonction de cette nouvelle liste"
     if(e.currentTarget.innerHTML==="Faites"){
       const newTodo =todo.filter(el=>el.completed===true)
