@@ -3,6 +3,7 @@ import{createLi}from'./components/task.js'
 
 const todo = await fetchApi()
 
+
 //on créer les lis pour le premier affichage :
 createLi(todo)
 
@@ -26,6 +27,15 @@ function filterTasks(e){
     }else{
         createLi(todo)
     }     
+    }
+
+    export function supprime(e){
+        //console.log(e.currentTarget.id)
+        const ul = document.querySelector('ul')
+        const newTodo = todo.filter(el=>el.id != e.currentTarget.id)
+        ul.innerHTML=""
+        createLi(newTodo)
+        
     }
    
  

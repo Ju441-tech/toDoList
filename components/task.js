@@ -1,4 +1,7 @@
 
+import {supprime} from '../app.js'
+
+
 
 export function createLi(list){
     const ul=document.querySelector('ul')
@@ -6,6 +9,7 @@ export function createLi(list){
     
     
     for(let el of list){
+       
     const li=document.createElement('li')
     li.classList.add("todo", "list-group-item", "d-flex", "align-items-center")
     const checkBox=document.createElement('input')
@@ -15,6 +19,8 @@ export function createLi(list){
     labelTitle.classList.add("ms-2", "form-check-label")
     const labelBin=document.createElement('label')
     labelBin.classList.add("ms-auto","btn","btn-danger", "btn-sm")
+    labelBin.id=el.id
+    labelBin.addEventListener('click',supprime)
     const bin=document.createElement('i')
     bin.classList.add("bi-trash")
    
@@ -24,6 +30,7 @@ export function createLi(list){
     labelBin.append(bin)
     ul.append(li)
     labelTitle.innerHTML=el.title
+    
     }
-
+   
 }
