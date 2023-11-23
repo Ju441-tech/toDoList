@@ -71,7 +71,8 @@ form.addEventListener('submit',addTask)
                 "completed": false
             }
         )
-       
+        const input = document.querySelector('.form-control')
+        input.value=""
         const ul=document.querySelector('ul')
         ul.innerHTML=''
         createLi(newList)
