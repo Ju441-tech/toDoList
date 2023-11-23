@@ -5,9 +5,9 @@ import { TodoList } from "./components/TodoList.js";
 const todo = await fetchApi()
 
 const list=  new TodoList(todo)
-console.log(list.list)
+//console.log(list.list)
 //list.todoList="hello"
-console.log(list.todoList)
+//console.log(list.todoList)
 
 //on créer les lis pour le premier affichage :
 createLi(list.todoList)
@@ -47,6 +47,11 @@ function filterTasks(e){
         
        
         
+    }
+    export function taskCompleted(){
+        const ul =document.querySelector('ul')
+        ul.innerHTML=""
+        //changer completed en true dans list.todoList grâce à e.currentTarget
     }
    
  
