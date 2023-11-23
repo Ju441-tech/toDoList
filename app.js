@@ -13,7 +13,7 @@ const list=  new TodoList(todo)
 createLi(list.todoList)
 
 //On créer un event listner sur les boutons qui appelle, au click, la fonction filterTasks, celle ci sera paramétrée pour connaitre sur quel bouton on a cliqué grâce à e.currentTarget
-const butFilter=document.querySelectorAll('button')
+const butFilter=document.querySelectorAll('.btn-outline-primary')
 butFilter.forEach(button=>button.addEventListener('click',filterTasks))
 
 
@@ -48,10 +48,33 @@ function filterTasks(e){
        
         
     }
-    export function taskCompleted(){
-        const ul =document.querySelector('ul')
-        ul.innerHTML=""
+    export function taskCompleted(e){
+        console.log(e.currentTarget)
         //changer completed en true dans list.todoList grâce à e.currentTarget
+        
+    }
+const form =document.querySelector('form')
+form.addEventListener('submit',addTask)
+    function addTask(e){
+        e.preventDefault()
+        const form=e.currentTarget
+        const data=new FormData(form)     
+        const newList=list.todoList
+         //1-cherche le dernier indice de todo :
+        const id= newList[newList.length-1].id
+        //On ajoute une nouveau objet à la collection List :
+        newList.push(
+            {
+                "userId": 1,
+                "id": id+1,//2-puis mettre dernier indice de todo + 1
+                "title": data.get("title"),
+                "completed": false
+            }
+        )
+       
+        const ul=document.querySelector('ul')
+        ul.innerHTML=''
+        createLi(newList)
     }
    
  

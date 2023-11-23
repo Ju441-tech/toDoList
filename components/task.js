@@ -1,5 +1,5 @@
 
-import {supprime} from '../app.js'
+import {supprime, taskCompleted} from '../app.js'
 
 
 
@@ -15,6 +15,7 @@ export function createLi(list){
     const checkBox=document.createElement('input')
     checkBox.type='checkbox'
     checkBox.classList.add("form-check-input")
+    checkBox.addEventListener('click',taskCompleted)
     const labelTitle=document.createElement('label')
     labelTitle.classList.add("ms-2", "form-check-label")
     const labelBin=document.createElement('label')
