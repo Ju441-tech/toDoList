@@ -5,9 +5,7 @@ import { TodoList } from "./components/TodoList.js";
 const todo = await fetchApi()
 
 const list=  new TodoList(todo)
-//console.log(list.list)
-//list.todoList="hello"
-//console.log(list.todoList)
+
 
 //on créer les lis pour le premier affichage :
 createLi(list.todoList)
@@ -48,15 +46,21 @@ function filterTasks(e){
        
         
     }
-    export function taskCompleted(e){
-        console.log(e.currentTarget)
+    export function setTaskCompleted(e){
+        console.log(e.currentTarget.id)
         //changer completed en true dans list.todoList grâce à e.currentTarget
+        console.log(list.list)
+        const elemlist=list.list
+        const tag=elemlist.find((el)=>el.id==(e.currentTarget.id))
+        console.log(tag)
+        tag.completed=true//Ca ne marche pas, il faut créer une classe pour "setter" les propriétés des objets
+        //Et une fois que les objets ont été settés, il faut faire un décochage automatique de la checkbox
         
     }
 const form =document.querySelector('form')
 form.addEventListener('submit',addTask)
     function addTask(e){
-        e.preventDefault()
+       e.preventDefault()
         const form=e.currentTarget
         const data=new FormData(form)     
         const newList=list.todoList
@@ -73,10 +77,9 @@ form.addEventListener('submit',addTask)
         )
         const input = document.querySelector('.form-control')
         input.value=""
-        const ul=document.querySelector('ul')
-        ul.innerHTML=''
-        createLi(newList)
+      
     }
+ 
    
  
   
